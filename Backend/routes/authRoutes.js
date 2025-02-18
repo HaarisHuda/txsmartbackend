@@ -26,6 +26,12 @@ router.post("/login",login)
 // Route for user signup
 router.post("/signup",signup)
 
+// route for otp verification 
+router.post("/otp-verification")
+
+//route to resend otp
+router.post("/resend-otp")
+
 // Route for changing the password
 router.post("/changepassword",auth,changePassword)
 

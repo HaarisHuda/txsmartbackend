@@ -23,7 +23,7 @@ const transporter = nodemailer.createTransport({
 // signup function 
 exports.signup = async (req, res) => {
     try {
-        const { firstName, lastName, email, password, confirmPassword, phoneNumber } = req.body;
+        const { firstName, lastName, email, password, confirmPassword } = req.body;
 
         // Validate required fields
         if (!firstName || !lastName || !email || !password || !confirmPassword ) {
@@ -43,6 +43,7 @@ exports.signup = async (req, res) => {
 
         // Generate OTP and store it
         const otp = generateOTP();
+        console.log(otp)
         await OTP.create({ email, otp });
 
         // Send OTP via Email
@@ -67,6 +68,7 @@ exports.signup = async (req, res) => {
             message: "OTP sent successfully. Please verify to complete signup.",
             tempUser, // Send temp user details for reference
         });
+        
     } catch (error) {
         console.error(error);
         return res.status(500).json({ success: false, message: "Signup failed, please try again" });

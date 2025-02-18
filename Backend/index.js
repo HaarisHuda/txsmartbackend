@@ -38,6 +38,6 @@ app.get('/',(req,res)=>{
   })
 })
 
-app.listen(4000, '0.0.0.0', () => {
+app.listen(PORT, () => {
   console.log('Server running on all network interfaces');
 });
